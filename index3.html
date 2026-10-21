@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Consulta los servicios y sistemas digitales de la Universidad Autónoma de Ciudad Juárez.">
+
+    <meta name="theme-color" content="#1f3354">
+
+    <title>Servicios Institucionales | UACJ</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --uacj-navy: #1f3354;
+            --uacj-navy-dark: #14243e;
+            --uacj-gold: #f0bd10;
+            --uacj-gold-light: #fff2df;
+
+            --text-primary: #263449;
+            --text-secondary: #637083;
+            --surface: #ffffff;
+            --surface-soft: #f5f7fa;
+            --border-color: #e2e7ee;
+
+            --radius-card: 16px;
+            --shadow-card:
+                0 5px 18px rgb(20 36 62 / 7%);
+            --shadow-card-hover:
+                0 14px 32px rgb(20 36 62 / 14%);
+
+            --transition: 220ms ease;
+        }
+
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================= */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+
+            font-family: "Roboto", Arial, sans-serif;
+            color: var(--text-primary);
+            background: var(--surface-soft);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container-wide {
+            width: min(1180px, calc(100% - 40px));
+            margin-inline: auto;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 16px;
+            z-index: 2000;
+
+            padding: 12px 18px;
+            color: white;
+            background: var(--uacj-navy);
+            border-radius: 8px;
+        }
+
+        .skip-link:focus {
+            top: 12px;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--uacj-gold);
+            outline-offset: 4px;
+        }
+
+        /* =========================
+           ENCABEZADO
+        ========================= */
+
+        .site-header {
+            position: relative;
+            z-index: 10;
+            background: var(--uacj-navy);
+            color: white;
+            box-shadow: 0 3px 12px rgb(0 0 0 / 12%);
+        }
+
+        .header-inner {
+            min-height: 88px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding-block: 14px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            min-width: 0;
+            text-decoration: none;
+        }
+
+        .brand img {
+            display: block;
+            width: 48px;
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .brand-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: 0.025em;
+        }
+
+        .brand-subtitle {
+            margin-top: 4px;
+            color: #dce5f2;
+            font-size: 0.8rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-change-access {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            padding: 11px 17px;
+            border: 1px solid rgb(255 255 255 / 45%);
+            border-radius: 9px;
+
+            color: white;
+            background: transparent;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+
+            transition:
+                background-color var(--transition),
+                border-color var(--transition),
+                color var(--transition);
+        }
+
+        .btn-change-access:hover {
+            color: var(--uacj-navy);
+            background: white;
+            border-color: white;
+        }
+
+        /* =========================
+           PORTADA
+        ========================= */
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            min-height: 340px;
+            padding-block: 60px;
+
+            color: white;
+            background-color: var(--uacj-navy);
+            background-image:
+                linear-gradient(100deg,
+                    rgb(20 36 62 / 96%) 0%,
+                    rgb(31 51 84 / 90%) 52%,
+                    rgb(31 51 84 / 72%) 100%),
+                url("imgs/background2.png");
+
+            background-position: top right;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            right: -90px;
+            bottom: -180px;
+
+            width: 430px;
+            height: 430px;
+            border: 1px solid rgb(255 255 255 / 12%);
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 35px rgb(255 255 255 / 4%),
+                0 0 0 70px rgb(255 255 255 / 3%);
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 16px;
+            color: #f0bd10;
+
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 28px;
+            height: 3px;
+            border-radius: 5px;
+            background: var(--uacj-gold);
+        }
+
+        .hero h1 {
+            max-width: 720px;
+            margin: 0 0 18px;
+
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -0.035em;
+        }
+
+        .hero h1 span {
+            color: #f0bd10;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            margin: 0;
+
+            color: #e2e9f2;
+            font-size: clamp(1rem, 1.8vw, 1.12rem);
+            line-height: 1.8;
+        }
+
+        /* =========================
+           CONTENIDO PRINCIPAL
+        ========================= */
+
+        main {
+            flex: 1;
+        }
+
+        .services-section {
+            padding-block: 58px 72px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .section-heading h2 {
+            margin: 0 0 8px;
+            color: var(--uacj-navy);
+            font-size: clamp(1.55rem, 3vw, 2rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        .section-heading p {
+            max-width: 650px;
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+        }
+
+        .services-count {
+            flex-shrink: 0;
+            padding: 8px 13px;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+
+            color: var(--uacj-navy);
+            background: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* =========================
+           BUSCADOR Y FILTROS
+        ========================= */
+
+        .search-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 235px;
+            gap: 14px;
+
+            margin-bottom: 32px;
+            padding: 18px;
+
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            background: white;
+            box-shadow: 0 3px 12px rgb(20 36 62 / 3%);
+        }
+
+        .field-label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--text-primary);
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .search-input-wrap {
+            position: relative;
+        }
+
+        .search-input-wrap>i {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .search-input,
+        .category-select {
+            width: 100%;
+            min-height: 48px;
+            padding: 11px 14px;
+
+            border: 1px solid #ccd5e0;
+            border-radius: 9px;
+            color: var(--text-primary);
+            background-color: white;
+
+            transition:
+                border-color var(--transition),
+                box-shadow var(--transition);
+        }
+
+        .search-input {
+            padding-left: 44px;
+        }
+
+        .search-input::placeholder {
+            color: #788496;
+        }
+
+        .search-input:focus,
+        .category-select:focus {
+            border-color: var(--uacj-navy);
+            outline: none;
+            box-shadow: 0 0 0 3px rgb(31 51 84 / 12%);
+        }
+
+        .search-help {
+            margin: 9px 0 0;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        /* =========================
+           TARJETAS DE SERVICIOS
+        ========================= */
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .service-card {
+            position: relative;
+            min-width: 0;
+            min-height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-card);
+            background: var(--surface);
+            box-shadow: var(--shadow-card);
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition);
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 4px;
+            background: var(--uacj-gold);
+
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #c8d2df;
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .service-card:hover::before,
+        .service-card:focus-within::before {
+            transform: scaleX(1);
+        }
+
+        .service-card[hidden] {
+            display: none !important;
+        }
+
+        .card-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 174px;
+            padding: 22px;
+
+            background:
+                linear-gradient(135deg,
+                    #f0f4f9,
+                    #fafbfd);
+
+            border-bottom: 1px solid #edf0f5;
+        }
+
+        .card-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 84px;
+            height: 84px;
+            border-radius: 22px;
+
+            color: var(--uacj-navy);
+            background: white;
+            box-shadow: 0 5px 20px rgb(31 51 84 / 9%);
+
+            font-size: 2.7rem;
+        }
+
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            padding: 23px 23px 24px;
+        }
+
+        .card-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            margin-bottom: 12px;
+            padding: 5px 10px;
+
+            border-radius: 999px;
+            color: var(--uacj-navy);
+            background: #edf2f8;
+
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.035em;
+            text-transform: uppercase;
+        }
+
+        .card-category i {
+            color: #9b681b;
+        }
+
+        .card-title {
+            margin: 0 0 10px;
+            color: var(--uacj-navy);
+
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.4;
+        }
+
+        .card-description {
+            flex: 1;
+            margin: 0 0 22px;
+
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.75;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            min-height: 44px;
+            margin-top: auto;
+            padding: 10px 14px;
+
+            border: 1px solid var(--uacj-navy);
+            border-radius: 8px;
+
+            color: white;
+            background: var(--uacj-navy);
+
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+
+            transition:
+                background-color var(--transition),
+                border-color var(--transition),
+                color var(--transition);
+        }
+
+        .card-link i {
+            transition: transform var(--transition);
+        }
+
+        .card-link:hover {
+            border-color: var(--uacj-navy-dark);
+            color: white;
+            background: var(--uacj-navy-dark);
+        }
+
+        .card-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* =========================
+           SIN RESULTADOS
+        ========================= */
+
+        .empty-state {
+            margin-top: 20px;
+            padding: 42px 20px;
+
+            border: 1px dashed #c8d2df;
+            border-radius: 14px;
+            background: white;
+            text-align: center;
+        }
+
+        .empty-state[hidden] {
+            display: none;
+        }
+
+        .empty-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 62px;
+            height: 62px;
+            margin-bottom: 15px;
+
+            border-radius: 50%;
+            color: var(--uacj-navy);
+            background: #edf2f8;
+            font-size: 1.7rem;
+        }
+
+        .empty-state h3 {
+            margin: 0 0 8px;
+            color: var(--uacj-navy);
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .empty-state p {
+            margin: 0 0 18px;
+            color: var(--text-secondary);
+        }
+
+        .btn-reset {
+            padding: 10px 16px;
+            border: 1px solid var(--uacj-navy);
+            border-radius: 8px;
+
+            color: white;
+            background: var(--uacj-navy);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn-reset:hover {
+            background: var(--uacj-navy-dark);
+        }
+
+        /* =========================
+           AYUDA
+        ========================= */
+
+        .help-section {
+            padding: 0 0 60px;
+        }
+
+        .help-panel {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+
+            padding: 28px 32px;
+            border: 1px solid #dce4ef;
+            border-radius: 15px;
+
+            background:
+                linear-gradient(110deg,
+                    #edf2f8,
+                    #ffffff);
+        }
+
+        .help-content {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .help-icon {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+
+            color: white;
+            background: var(--uacj-navy);
+            font-size: 1.7rem;
+        }
+
+        .help-content h2 {
+            margin: 0 0 5px;
+            color: var(--uacj-navy);
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .help-content p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .help-link {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            min-height: 46px;
+            padding: 11px 16px;
+            border: 1px solid var(--uacj-navy);
+            border-radius: 9px;
+
+            color: white;
+            background: var(--uacj-navy);
+
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+
+            transition: background-color var(--transition);
+        }
+
+        .help-link:hover {
+            color: white;
+            background: var(--uacj-navy-dark);
+        }
+
+        /* =========================
+           PIE DE PÁGINA
+        ========================= */
+
+        .site-footer {
+            margin-top: auto;
+            color: #e1e8f1;
+            background: var(--uacj-navy-dark);
+        }
+
+        .footer-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding-block: 30px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: block;
+            width: 88px;
+            max-height: 55px;
+            object-fit: contain;
+        }
+
+        .footer-logo-secondary {
+            display: block;
+            width: 70px;
+            max-height: 50px;
+            object-fit: contain;
+        }
+
+        .footer-copy {
+            color: #d1dbea;
+            font-size: 0.83rem;
+        }
+
+        .footer-copy p {
+            margin: 0;
+        }
+
+        .footer-copy p+p {
+            margin-top: 4px;
+        }
+
+        .footer-label {
+            color: white;
+            font-weight: 700;
+        }
+
+        .footer-bottom {
+            padding-block: 13px;
+            border-top: 1px solid rgb(255 255 255 / 13%);
+
+            color: #c1ccdc;
+            font-size: 0.78rem;
+        }
+
+        .footer-bottom-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        .privacy-link {
+            color: #f4cc8f;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .privacy-link:hover {
+            color: white;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 991px) {
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 20px;
+            }
+
+            .hero {
+                min-height: 310px;
+            }
+
+            .card-image {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .container-wide {
+                width: min(100% - 30px, 520px);
+            }
+
+            .header-inner {
+                min-height: auto;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 16px;
+                padding-block: 17px;
+            }
+
+            .brand img {
+                width: 42px;
+            }
+
+            .brand-title {
+                font-size: 0.95rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.75rem;
+            }
+
+            .header-actions {
+                width: 100%;
+            }
+
+            .btn-change-access {
+                width: 100%;
+                min-height: 44px;
+            }
+
+            .hero {
+                min-height: 0;
+                padding-block: 46px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 9vw, 2.8rem);
+            }
+
+            .services-section {
+                padding-block: 38px 46px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .search-panel {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 15px;
+                margin-bottom: 24px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .card-image {
+                height: 170px;
+            }
+
+            .card-body {
+                padding: 21px;
+            }
+
+            .help-section {
+                padding-bottom: 42px;
+            }
+
+            .help-panel {
+                align-items: stretch;
+                flex-direction: column;
+                padding: 22px;
+            }
+
+            .help-content {
+                align-items: flex-start;
+            }
+
+            .help-link {
+                width: 100%;
+            }
+
+            .footer-main {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 20px;
+                padding-block: 25px;
+            }
+
+            .footer-brand {
+                gap: 15px;
+            }
+
+            .footer-logo {
+                width: 76px;
+            }
+
+            .footer-logo-secondary {
+                width: 60px;
+            }
+
+            .footer-bottom-inner {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 9px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--<a class="skip-link" href="#contenido">
+        Saltar al contenido principal
+    </a> -->
+
+    <!-- =========================
+         ENCABEZADO
+    ========================== -->
+
+    <header class="site-header">
+        <div class="container-wide header-inner">
+
+            <a class="brand" href="portal_uacj_mejorado.html" aria-label="Regresar al portal principal de la UACJ">
+
+                <img src="imgs/Logo_UACJ.svg" alt="Logotipo de la Universidad Autónoma de Ciudad Juárez">
+
+                <span class="brand-text">
+                    <span class="brand-title">
+                        UNIVERSIDAD AUTÓNOMA DE CIUDAD JUÁREZ
+                    </span>
+                    
+                </span>
+            </a>
+
+            <div class="header-actions">
+                <!-- Ajusta esta ruta si el portal principal está en otra ubicación -->
+                <a class="btn-change-access" href="portal_uacj_mejorado.html">
+                    <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                    Cambiar acceso
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         PORTADA
+    ========================== -->
+
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="container-wide">
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    Portal público
+                </div>
+
+                <h1 id="hero-title">
+                    Explora los servicios,<br>
+                    <span>digitales de la UACJ</span>
+                </h1>
+
+                <p class="hero-description">
+                    Selecciona un servicio o utiliza el buscador
+                    para encontrarlo más fácilmente.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+
+    <main id="contenido">
+
+        <section class="services-section" aria-labelledby="services-title">
+            <div class="container-wide">
+
+                <div class="section-heading">
+                    <div>
+                        <!--<h2 id="services-title">
+                            Explora nuestros servicios
+                        </h2>-->
+
+                        <p>
+                            Selecciona una opción para continuar. <br> Todos tus recursos institucionales, organizados y
+                            siempre disponibles
+                        </p>
+                    </div>
+
+                    <span class="services-count" id="services-count">
+                        6 servicios
+                    </span>
+                </div>
+
+
+                <!-- BUSCADOR Y FILTRO -->
+
+                <div class="search-panel">
+
+                    <div>
+                        <label class="field-label" for="service-search">
+                            Buscar un servicio
+                        </label>
+
+                        <div class="search-input-wrap">
+                            <i class="bi bi-search" aria-hidden="true"></i>
+
+                            <input class="search-input" type="search" id="service-search"
+                                placeholder="Ej. pagos, asistencia, documentos..." autocomplete="off"
+                                aria-describedby="search-help">
+                        </div>
+
+                        <p class="search-help" id="search-help">
+                            Puedes buscar por nombre o descripción.
+                        </p>
+                    </div>
+
+                    <div>
+                        <label class="field-label" for="category-filter">
+                            Filtrar por categoría
+                        </label>
+
+                        <select class="category-select" id="category-filter">
+                            <option value="todas">
+                                Todas las categorías
+                            </option>
+                            <option value="administracion">
+                                Administración
+                            </option>
+                            <option value="finanzas">
+                                Finanzas
+                            </option>
+                            <option value="personal">
+                                Personal
+                            </option>
+                            <option value="eventos">
+                                Eventos
+                            </option>
+                            <option value="documentos">
+                                Documentos
+                            </option>
+                            <option value="informacion">
+                                Información institucional
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <!-- TARJETAS -->
+
+                <div class="services-grid" id="services-grid">
+
+                    <!-- SUDIC 
+
+                    <article class="service-card" data-category="administracion"
+                        data-search="sudic sistema universitario de documentos información consulta administración">
+                        <div class="card-image">
+                            <img src="imgs/sudic.png" alt="" loading="lazy" onerror="this.hidden=true">
+                        </div>
+
+                        <div class="card-body">
+                            <span class="card-category">
+                                <i class="bi bi-folder2" aria-hidden="true"></i>
+                                Administración
+                            </span>
+
+                            <h3 class="card-title">
+                                SUDIC
+                            </h3>
+
+                            <p class="card-description">
+                                Accede al sistema institucional SUDIC
+                                para consultar y realizar las actividades
+                                correspondientes a sus funciones.
+                            </p>
+
+                            
+                            <a class="card-link service-link" href="#" data-service="SUDIC">
+                                Acceder al sistema
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article> -->
+
+
+                    <!-- PAGOS EN LÍNEA -->
+
+                    <article class="service-card" data-category="finanzas"
+                        data-search="pagos en línea finanzas pago servicios recibos trámites">
+                        <div class="card-image">
+                            <img src="imgs/pagos.png" alt="" loading="lazy" onerror="this.hidden=true">
+                        </div>
+
+                        <div class="card-body">
+                            <span class="card-category">
+                                <i class="bi bi-credit-card" aria-hidden="true"></i>
+                                Finanzas
+                            </span>
+
+                            <h3 class="card-title">
+                                Pagos en Línea
+                            </h3>
+
+                            <p class="card-description">
+                                Consulta y realiza los pagos disponibles
+                                a través de las herramientas digitales
+                                habilitadas por la institución.
+                            </p>
+
+                            <!-- TODO: sustituir # por la URL real de pagos -->
+                            <a class="card-link service-link" href="#" data-service="Pagos en Línea">
+                                Ir a pagos
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+
+                    <!-- ASISTENCIA 
+
+                    <article class="service-card" data-category="personal"
+                        data-search="sistema de asistencia en línea personal registro asistencia incidencias">
+                        <div class="card-image">
+                            <img src="imgs/asistencia.png" alt="" loading="lazy" onerror="this.hidden=true">
+                        </div>
+
+                        <div class="card-body">
+                            <span class="card-category">
+                                <i class="bi bi-person-check" aria-hidden="true"></i>
+                                Personal
+                            </span>
+
+                            <h3 class="card-title">
+                                Sistema de Asistencia en Línea
+                            </h3>
+
+                            <p class="card-description">
+                                Consulta el sistema institucional
+                                relacionado con el registro y la gestión
+                                de asistencia del personal.
+                            </p>
+
+                            
+                            <a class="card-link service-link" href="#" data-service="Sistema de Asistencia en Línea">
+                                Consultar asistencia
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article> -->
+
+
+                    <!-- REGISTRO DE EVENTOS 
+
+                    <article class="service-card" data-category="eventos"
+                        data-search="registro de eventos actividades institucionales eventos espacios solicitudes">
+                        <div class="card-image">
+                            <img src="imgs/eventos.png" alt="" loading="lazy" onerror="this.hidden=true">
+                        </div>
+
+                        <div class="card-body">
+                            <span class="card-category">
+                                <i class="bi bi-calendar-event" aria-hidden="true"></i>
+                                Eventos
+                            </span>
+
+                            <h3 class="card-title">
+                                Registro de Eventos
+                            </h3>
+
+                            <p class="card-description">
+                                Accede a la herramienta institucional
+                                para realizar las actividades relacionadas
+                                con el registro de eventos.
+                            </p>
+
+                          
+                            <a class="card-link service-link" href="#" data-service="Registro de Eventos">
+                                Registrar evento
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article> -->
+
+
+                    <!-- GESTIÓN DOCUMENTAL
+
+                    <article class="service-card" data-category="documentos"
+                        data-search="gestión integral de documentos gestión documental oficios certificados documentos digitales">
+                        <div class="card-image">
+                            <img src="imgs/gestion-doc.png" alt="" loading="lazy" onerror="this.hidden=true">
+                        </div>
+
+                        <div class="card-body">
+                            <span class="card-category">
+                                <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+                                Documentos
+                            </span>
+
+                            <h3 class="card-title">
+                                Gestión Integral de Documentos
+                            </h3>
+
+                            <p class="card-description">
+                                Consulta las herramientas destinadas
+                                a la gestión de documentos digitales
+                                y los procesos documentales institucionales.
+                            </p>
+
+                          
+                            <a class="card-link"
+                                href="https://alumnosuacj.sharepoint.com/sites/SIIv3/SitePages/Gesti%C3%B3n-Integral-de-Documentos.aspx"
+                                target="_blank" rel="noopener noreferrer">
+                                Consultar sistema
+                                <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article> -->
+
+
+                    <!-- ESTRUCTURA ORGANIZACIONAL -->
+
+                    <article class="service-card" data-category="informacion"
+                        data-search="estructura organizacional organigrama direcciones generales unidades responsables personal institucional">
+                        <div class="card-image">
+                            <div class="card-icon" aria-hidden="true">
+                                <i class="bi bi-diagram-3"></i>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <span class="card-category">
+                                <i class="bi bi-diagram-3" aria-hidden="true"></i>
+                                Información institucional
+                            </span>
+
+                            <h3 class="card-title">
+                                Estructura Organizacional
+                            </h3>
+
+                            <p class="card-description">
+                                Consulta la estructura organizacional
+                                de la universidad y navega por las
+                                unidades y los niveles disponibles.
+                            </p>
+
+                            <!-- TODO: sustituir # por la URL real del organigrama -->
+                            <a class="card-link service-link" href="#" data-service="Estructura Organizacional">
+                                Ver organigrama
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+
+
+                <!-- ESTADO VACÍO -->
+
+                <div class="empty-state" id="empty-state" role="status" aria-live="polite" hidden>
+                    <div class="empty-icon" aria-hidden="true">
+                        <i class="bi bi-search"></i>
+                    </div>
+
+                    <h3>No encontramos servicios</h3>
+
+                    <p>
+                        Intenta con otro término de búsqueda
+                        o selecciona una categoría diferente.
+                    </p>
+
+                    <button class="btn-reset" type="button" id="reset-search">
+                        <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>
+                        Mostrar todos los servicios
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             CENTRO DE AYUDA
+        ========================== -->
+
+        <section class="help-section" aria-labelledby="help-title">
+            <div class="container-wide">
+
+                <div class="help-panel">
+
+                    <div class="help-content">
+                        <div class="help-icon" aria-hidden="true">
+                            <i class="bi bi-question-circle"></i>
+                        </div>
+
+                        <div>
+                            <h2 id="help-title">
+                                ¿Necesitas ayuda?
+                            </h2>
+
+                            <p>
+                                Consulta los recursos de apoyo y la
+                                información disponible sobre los sistemas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <a class="help-link"
+                        href="https://alumnosuacj.sharepoint.com/sites/SIIv3/SitePages/Gesti%C3%B3n-Integral-de-Documentos.aspx"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-life-preserver" aria-hidden="true"></i>
+                        Centro de ayuda
+                        <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         PIE DE PÁGINA
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="container-wide footer-main">
+
+            <div class="footer-brand">
+
+                <img class="footer-logo" src="imgs/Logo_DGTI_bco.svg"
+                    alt="Dirección General de Tecnologías de Información" loading="lazy">
+
+                <img class="footer-logo-secondary" src="imgs/siiv33.svg" alt="SIIv3" loading="lazy">
+
+            </div>
+
+            <div class="footer-copy">
+                <p class="footer-label">
+                    Universidad Autónoma de Ciudad Juárez
+                </p>
+
+                <p>
+                    Dirección General de Tecnologías de Información
+                </p>
+
+                <p>
+                    Sistemas y servicios institucionales
+                </p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container-wide footer-bottom-inner">
+
+                <p>
+                    © <span id="current-year">2026</span>
+                    Universidad Autónoma de Ciudad Juárez.
+                    Todos los derechos reservados.
+                </p>
+
+                <!-- TODO: colocar la URL oficial del aviso de privacidad -->
+                <a class="privacy-link" href="#" id="privacy-link">
+                    Aviso de privacidad
+                </a>
+
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+        "use strict";
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const searchInput =
+                document.getElementById("service-search");
+
+            const categoryFilter =
+                document.getElementById("category-filter");
+
+            const servicesGrid =
+                document.getElementById("services-grid");
+
+            const serviceCards =
+                Array.from(
+                    servicesGrid.querySelectorAll(".service-card")
+                );
+
+            const servicesCount =
+                document.getElementById("services-count");
+
+            const emptyState =
+                document.getElementById("empty-state");
+
+            const resetButton =
+                document.getElementById("reset-search");
+
+            const privacyLink =
+                document.getElementById("privacy-link");
+
+            const serviceLinks =
+                document.querySelectorAll(".service-link");
+
+            /*
+             * Convierte el texto a minúsculas y elimina los acentos
+             * para que búsquedas como "gestion" encuentren "gestión".
+             */
+            function normalizeText(text) {
+                return text
+                    .toLocaleLowerCase("es-MX")
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .trim();
+            }
+
+            /*
+             * Filtra las tarjetas según el texto y la categoría.
+             */
+            function filterServices() {
+
+                const searchTerm =
+                    normalizeText(searchInput.value);
+
+                const selectedCategory =
+                    categoryFilter.value;
+
+                let visibleCount = 0;
+
+                serviceCards.forEach(function (card) {
+
+                    const title =
+                        card.querySelector(".card-title").textContent;
+
+                    const description =
+                        card.querySelector(".card-description").textContent;
+
+                    const searchKeywords =
+                        card.dataset.search || "";
+
+                    const searchableText = normalizeText(
+                        title + " " +
+                        description + " " +
+                        searchKeywords
+                    );
+
+                    const categoryMatches =
+                        selectedCategory === "todas" ||
+                        card.dataset.category === selectedCategory;
+
+                    const textMatches =
+                        searchTerm === "" ||
+                        searchableText.includes(searchTerm);
+
+                    const shouldShow =
+                        categoryMatches && textMatches;
+
+                    card.hidden = !shouldShow;
+
+                    if (shouldShow) {
+                        visibleCount++;
+                    }
+                });
+
+                /*
+                 * Actualiza el contador de servicios visibles.
+                 */
+                servicesCount.textContent =
+                    visibleCount +
+                    (visibleCount === 1
+                        ? " servicio"
+                        : " servicios");
+
+                /*
+                 * Muestra el mensaje cuando no hay coincidencias.
+                 */
+                emptyState.hidden = visibleCount !== 0;
+            }
+
+            /*
+             * Restaura el buscador y los filtros.
+             */
+            function resetFilters() {
+
+                searchInput.value = "";
+                categoryFilter.value = "todas";
+
+                filterServices();
+                searchInput.focus();
+            }
+
+            searchInput.addEventListener(
+                "input",
+                filterServices
+            );
+
+            categoryFilter.addEventListener(
+                "change",
+                filterServices
+            );
+
+            resetButton.addEventListener(
+                "click",
+                resetFilters
+            );
+
+            /*
+             * Evita que los enlaces de servicios sin URL real
+             * lleven al usuario al inicio de la página.
+             *
+             * IMPORTANTE:
+             * Sustituye href="#" por la URL correspondiente
+             * antes de publicar. Después puedes eliminar este bloque.
+             */
+            serviceLinks.forEach(function (link) {
+
+                link.addEventListener("click", function (event) {
+
+                    if (link.getAttribute("href") === "#") {
+                        event.preventDefault();
+
+                        const serviceName =
+                            link.dataset.service || "este servicio";
+
+                        alert(
+                            "El enlace de " + serviceName +
+                            " todavía debe configurarse con la dirección " +
+                            "del sistema correspondiente."
+                        );
+                    }
+                });
+            });
+
+            /*
+             * Evita una navegación vacía mientras se configura
+             * la URL oficial del aviso de privacidad.
+             */
+            privacyLink.addEventListener("click", function (event) {
+
+                if (privacyLink.getAttribute("href") === "#") {
+                    event.preventDefault();
+
+                    alert(
+                        "Agrega la dirección oficial del aviso de privacidad " +
+                        "antes de publicar esta página."
+                    );
+                }
+            });
+
+            /*
+             * Actualiza automáticamente el año del pie de página.
+             */
+            document.getElementById("current-year").textContent =
+                new Date().getFullYear();
+
+            /*
+             * Inicializa la página con todos los servicios visibles.
+             */
+            filterServices();
+
+        });
+    </script>
+
+</body>
+
+</html>
