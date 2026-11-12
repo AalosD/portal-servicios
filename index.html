@@ -1,45 +1,71 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1f3354">
-  <meta name="description" content="Accede a los servicios digitales de la comunidad universitaria de la Universidad Autónoma de Ciudad Juárez.">
-  <title>Portal de servicios universitarios | UACJ</title>
+  <meta name="description"
+    content="Accede a los servicios digitales de la comunidad universitaria de la Universidad Autónoma de Ciudad Juárez.">
+  <title>Portal de plataformas universitarias | UACJ</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
 
+  <!-- Estilos -->
+  <link rel="stylesheet" href="estilo-base.css">
   <link rel="stylesheet" href="estilo.css">
 
 </head>
 
 <body>
+
+  <!-- =========================
+           ENCABEZADO
+      ========================== -->
+  
   <header class="site-header">
-    <nav class="container header-inner" aria-label="Navegación principal">
-      <a href="#" aria-label="Portal de servicios universitarios UACJ, inicio">
-        <img class="brand-logo" src="imgs/Logo_UACJ.svg" alt="Universidad Autónoma de Ciudad Juárez">
+    <div class="container header-inner">
+  
+      <a class="brand" href="https://www.uacj.mx/" aria-label="Regresar al portal principal de la UACJ">
+        <img class="logo-uacj" src="imgs/Logo_UACJ.svg" alt="Logotipo de la Universidad Autónoma de Ciudad Juárez">
       </a>
-      <a class="header-login" href="index2.html">
-        Iniciar sesión <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
-      </a>
-    </nav>
+  
+      <div class="header-actions">
+        <a class="header-login" href="#">
+          Iniciar sesión <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
+        </a>
+      </div>
+  
+    </div>
   </header>
+
 
   <main class="hero">
     <section class="hero-copy" aria-labelledby="hero-title">
-      <p class="eyebrow">Portal de servicios universitarios</p>
+      <p class="eyebrow">Portal de plataformas universitarias</p>
       <h1 class="hero-title" id="hero-title">Todo lo que necesitas, en un solo lugar.</h1>
-      <p class="hero-description">Accede de forma rápida y segura a los servicios digitales de tu comunidad universitaria.</p>
+      <p class="hero-description">Accede de forma rápida y segura a las plataformas digitales de tu comunidad
+        universitaria.</p>
 
       <ul class="benefits" aria-label="Beneficios del portal">
         <li class="benefit">
           <span class="benefit-icon"><i class="bi bi-grid-1x2" aria-hidden="true"></i></span>
-          <strong>Servicios universitarios</strong>
+          <strong>Plataformas universitarias</strong>
           <span>Todo en un mismo lugar</span>
         </li>
         <li class="benefit">
@@ -86,12 +112,18 @@
     </section>
   </main>
 
+  <!-- =========================
+           PIE DE PÁGINA
+      ========================== -->
+
   <footer class="site-footer">
-    <p class="footer-legal">© 2026 Universidad Autónoma de Ciudad Juárez · <a class="link-light" href="#" aria-label="Política de privacidad">Política de privacidad</a></p>
+    <p class="footer-legal">© 2026 Universidad Autónoma de Ciudad Juárez · <a class="link-light" href="#"
+        aria-label="Política de privacidad">Política de privacidad</a></p>
     <div class="footer-logos" aria-label="Identidad institucional">
       <img src="imgs/Logo_DGTI_bco.svg" alt="Dirección General de Tecnologías de Información">
       <img src="imgs/siiv33.svg" alt="Sistema institucional">
     </div>
   </footer>
 </body>
+
 </html>

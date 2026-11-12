@@ -1,0 +1,143 @@
+:root {
+    --uacj-navy: #1f3354;
+    --uacj-navy-dark: #14243e;
+    --uacj-gold: #f0bd10;
+    --uacj-gold-light: #fff2df;
+
+    --text-main: #000000bf;
+    --text-muted: #5c6878;
+
+    --border-color: #e2e7ee;
+    --surface: #fff;
+    --surface-soft: #f3f6fa;
+    --focus-ring: #1769e0;
+    --radius-lg: 1.25rem;
+
+    --shadow-card: 0 5px 18px rgb(20 36 62 / 7%);
+    --shadow-card-hover: 0 14px 32px rgb(20 36 62 / 14%);
+    --radius-card: 16px;
+
+    --transition: 220ms ease;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+    color: var(--text-main);
+    background: var(--surface-soft);
+}
+
+/*===== header ======*/
+.site-header {
+    position: relative;
+    z-index: 2;
+    background: var(--uacj-navy);
+    border-bottom: 3px solid var(--uacj-gold);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: .72rem;
+}
+
+.logo-uacj {
+    display: block;
+    width: auto;
+    height: 40px;
+    max-width: min(52vw, 230px);
+    object-fit: contain;
+}
+
+.header-login {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    padding: .7rem .9rem;
+    border-radius: .65rem;
+    transition: background-color .2s ease, color .2s ease;
+}
+
+.header-login:hover {
+    color: #fff;
+    background: rgb(255 255 255 / 10%);
+}
+
+/*===== footer ======*/
+.site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 68px;
+    padding: .8rem max(1.25rem, calc((100vw - 1180px) / 2));
+    color: #fff;
+    background: var(--uacj-navy-dark);
+}
+
+.footer-legal {
+    margin: 0;
+    color: #edf2f8;
+    font-size: .8rem;
+    line-height: 1.5;
+}
+
+.footer-logos {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logos img {
+    display: block;
+    width: auto;
+    max-width: 130px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* ======= footer responsive ==========*/
+@media (max-width: 600px) {
+
+    .site-footer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+        padding: 20px 16px;
+    }
+
+    .footer-legal {
+        margin: 0;
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .footer-logos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .footer-logos img {
+        height: 30px;
+    }
+
+}
